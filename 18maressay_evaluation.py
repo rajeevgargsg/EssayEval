@@ -7,13 +7,59 @@ Original file is located at
     https://colab.research.google.com/drive/1DA5MXRyCy9ssV0RQ2Y6L7DSI0hzcN_Kq
 """
 
+# --- SETUP LOGIC (Python File Compatible) ---
+import sys
+import subprocess
 
+def install_dependencies():
+    packages = [
+        "langchain-groq==1.1.2",
+        "langgraph==1.1.2",
+        "tavily-python==0.7.23",
+        "requests==2.32.5"
+    ]
+
+    print("Aligning dependencies for 2026 environment...")
+    for package in packages:
+        try:
+            subprocess.check_call([sys.executable, "-m", "pip", "install", package, "--quiet"])
+        except Exception as e:
+            print(f"Failed to install {package}: {e}")
+
+# Run the installation
+install_dependencies()
+
+# If you are in Colab, you might still need to restart manually if 'requests' was already loaded.
+# In a local .py script, the new versions will be available on the next run or via a virtual env.
 
 # --- SETUP CELL ---
 import sys
 
 # Install/Update core libraries with specific versions to prevent the dependency error
-!pip install -U langchain-groq langgraph tavily-python requests==2.32.5 --quiet
+# --- SETUP LOGIC (Python File Compatible) ---
+import sys
+import subprocess
+
+def install_dependencies():
+    packages = [
+        "langchain-groq==1.1.2",
+        "langgraph==1.1.2",
+        "tavily-python==0.7.23",
+        "requests==2.32.5"
+    ]
+
+    print("Aligning dependencies for 2026 environment...")
+    for package in packages:
+        try:
+            subprocess.check_call([sys.executable, "-m", "pip", "install", package, "--quiet"])
+        except Exception as e:
+            print(f"Failed to install {package}: {e}")
+
+# Run the installation
+install_dependencies()
+
+# If you are in Colab, you might still need to restart manually if 'requests' was already loaded.
+# In a local .py script, the new versions will be available on the next run or via a virtual env.
 
 # Restart the session automatically to apply the correct 'requests' version
 if 'google.colab' in sys.modules:
@@ -145,3 +191,5 @@ print(f"Critique Adjustments: {result['correction_count']}")
 print(f"Final Audit: {result['quality_score']}")
 print("-" * 60)
 print(result['final_essay'])
+
+"""# New section"""
